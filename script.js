@@ -63,6 +63,7 @@ const wordsList = [
 
 var selectedWord = '';
 let counter=0;
+let wrong_word_list=[];
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -111,7 +112,15 @@ function letter_focus() {
             input.nextElementSibling.textContent = input.value;
 
             if (index < array.length - 1 && input.value.length === 1) {
-                array[index + 1].focus();
+                if (wrong_word_list.includes(array[index].value))
+                {
+                    alert(" Wrong Word!")
+                    array[index].value='';
+                    array[index].focus();
+                }   
+                else{             
+                    array[index + 1].focus();
+                }
             }
         });
     });
@@ -155,9 +164,11 @@ function convertToSuperscript(count) {
     return count.toString().split('').map(digit => superscriptDigits[parseInt(digit)]).join('');
 }
 
+function wrongWord(letter){
+    const wrong = document.getElementById('wrong-word');
+    wrong.innerHTML += `<span>${letter.value}</span>`;
+}
 function checkWord(button){
-    console.log("\n counter "+counter);
-
     
     const word = button.parentNode;
     
@@ -171,6 +182,7 @@ function checkWord(button){
 
     let guessedLetter;
     let flag= true;
+
     for (let i = 0; i < inputWord.length; i++) 
     {
         
@@ -209,6 +221,12 @@ function checkWord(button){
             inputs[i].style.color= 'red';
             inputs[i].style.background= 'peachpuff';
             flag=false;
+            if (!(wrong_word_list.includes(inputs[i].value)))
+            {
+                wrong_word_list.push(inputs[i].value);
+                wrongWord(inputs[i])
+            }
+
         }
 
         
@@ -225,7 +243,6 @@ function checkWord(button){
         counter++;
         if (counter >=6)
         {
-
             alert(" Oops! You loose \n\n Correct Word was : "+selectedWord);
             location.reload();
         }

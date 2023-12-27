@@ -80,3 +80,13 @@ html{
     color:black;
     border: 2px solid black;
 }
+
+
+@media  (max-width: 768px) {
+    .container{
+        width: 100%;
+    }
+    .word-input{
+        width:100%;
+    }
+}

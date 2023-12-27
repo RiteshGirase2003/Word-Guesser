@@ -80,7 +80,18 @@ html{
     color:black;
     border: 2px solid black;
 }
+.container .wrong-word{
+    margin-top: 2em;
 
+}
+.container .wrong-word span{
+    display:inline-block;
+    font-size: 2rem;
+    border: 1px solid red;
+    border-bottom: 0.2em solid red;
+    background: rgb(255, 168, 168);
+    padding: 0 1em;
+}
 
 @media  (max-width: 768px) {
     .container{

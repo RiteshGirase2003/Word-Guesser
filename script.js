@@ -158,7 +158,7 @@ function checkWord(button){
         if (counter >=6)
         {
 
-            alert(" Oops! You loose"+"\n\n Correct Word was : "+selectedWord);
+            alert(" Oops! You loose \n\n Correct Word was : "+selectedWord);
             location.reload();
         }
     }

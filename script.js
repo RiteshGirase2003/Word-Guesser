@@ -112,15 +112,15 @@ function letter_focus() {
             input.nextElementSibling.textContent = input.value;
 
             if (index < array.length - 1 && input.value.length === 1) {
-                if (wrong_word_list.includes(array[index].value))
-                {
-                    alert(" Wrong Word! : "+array[index].value)
-                    array[index].value='';
-                    array[index].focus();
-                }   
-                else{             
+                // if (wrong_word_list.includes(array[index].value))
+                // {
+                //     alert(" Wrong Word! : "+array[index].value)
+                //     array[index].value='';
+                //     array[index].focus();
+                // }   
+                // else{             
                     array[index + 1].focus();
-                }
+                // }
             }
         });
     });
